@@ -10,39 +10,63 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: '#120F17',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    title: 'Desenvolvedor Front-end',
+    description: 'Especialista em criar interfaces, institucionais e landing pages focadas em conversão. (20 anos)',
+    label: 'Perfil',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
+        <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+      </svg>
+    )
   },
   {
     color: '#120F17',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+    title: 'TripleTen Bootcamp',
+    description: 'Formado no único bootcamp americano de tecnologia no Brasil.',
+    label: 'Formação',
+    icon: (
+      <img src="/tripleten.png" alt="TripleTen Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+    )
   },
   {
     color: '#120F17',
-    title: 'Collaboration',
-    description: 'Work together seamlessly',
-    label: 'Teamwork'
+    title: 'React, Git & Mais',
+    description: 'Domínio do ecossistema moderno de desenvolvimento web e versionamento.',
+    label: 'Stack',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline>
+      </svg>
+    )
   },
   {
     color: '#120F17',
-    title: 'Automation',
-    description: 'Streamline workflows',
-    label: 'Efficiency'
+    title: 'Gestão de Tráfego',
+    description: 'Campanhas Meta Ads e integração de Pixel, Google Tag Manager, Hotjar e ferramentas de rastreio.',
+    label: 'Marketing',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>
+      </svg>
+    )
   },
   {
     color: '#120F17',
-    title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
+    title: 'Escola de Especialistas',
+    description: 'Aprovado e classificado no exigente concurso da Força Aérea Brasileira (EEAR).',
+    label: 'Conquista Militar',
+    icon: (
+      <img src="/eear.jpeg" alt="EEAR Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+    )
   },
   {
     color: '#120F17',
-    title: 'Security',
-    description: 'Enterprise-grade protection',
-    label: 'Protection'
+    title: 'Fuzileiros Navais',
+    description: 'Classificação de destaque no rigoroso concurso da Marinha do Brasil (CFN).',
+    label: 'Conquista Militar',
+    icon: (
+      <img src="/cfn.jpeg" alt="CFN Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+    )
   }
 ];
 
@@ -487,6 +511,28 @@ const MagicBento = ({
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
 
+  useEffect(() => {
+    if (!gridRef.current || shouldDisableAnimations) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('magic-bento-card--visible');
+        } else {
+          entry.target.classList.remove('magic-bento-card--visible');
+        }
+      });
+    }, {
+      threshold: 0.15, // Trigger when 15% is visible
+      rootMargin: '0px 0px -10% 0px' // Slightly inset so it doesn't trigger at the absolute edge
+    });
+
+    const cards = gridRef.current.querySelectorAll('.magic-bento-card');
+    cards.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [shouldDisableAnimations]);
+
   return (
     <section className="bento-section" style={{ padding: '4rem 0', background: '#120F17' }}>
       {enableSpotlight && (
@@ -524,6 +570,7 @@ const MagicBento = ({
               >
                 <div className="magic-bento-card__header">
                   <div className="magic-bento-card__label">{card.label}</div>
+                  {card.icon && <div className="magic-bento-card__icon">{card.icon}</div>}
                 </div>
                 <div className="magic-bento-card__content">
                   <h2 className="magic-bento-card__title">{card.title}</h2>
@@ -647,6 +694,7 @@ const MagicBento = ({
             >
               <div className="magic-bento-card__header">
                 <div className="magic-bento-card__label">{card.label}</div>
+                {card.icon && <div className="magic-bento-card__icon">{card.icon}</div>}
               </div>
               <div className="magic-bento-card__content">
                 <h2 className="magic-bento-card__title">{card.title}</h2>

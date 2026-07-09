@@ -34,7 +34,11 @@
   background: var(--background-dark);
   font-weight: 300;
   overflow: hidden;
-  transition: all 0.3s ease;
+  
+  /* Initial hidden state for scroll animation */
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 
   --glow-x: 50%;
   --glow-y: 50%;
@@ -42,9 +46,17 @@
   --glow-radius: 200px;
 }
 
-.magic-bento-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+/* Visible state triggered by IntersectionObserver */
+.magic-bento-card.magic-bento-card--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hover state on visible cards */
+.magic-bento-card.magic-bento-card--visible:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .magic-bento-card__header,
@@ -65,6 +77,29 @@
 
 .magic-bento-card__label {
   font-size: 16px;
+  opacity: 0.9;
+}
+
+.magic-bento-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.magic-bento-card:hover .magic-bento-card__icon {
+  color: #c9b0ff;
+  background: rgba(82, 39, 255, 0.15);
+  border-color: rgba(82, 39, 255, 0.3);
+  transform: scale(1.05);
 }
 
 .magic-bento-card__title,
