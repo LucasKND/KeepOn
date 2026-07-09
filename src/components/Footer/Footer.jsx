@@ -21,7 +21,7 @@ function Footer() {
 
           <div className="footer__links">
             <a href="https://github.com/LucasKND" target="_blank" rel="noreferrer" className="footer__link">GitHub</a>
-            <a href="https://linkedin.com/in/" target="_blank" rel="noreferrer" className="footer__link">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/lucas-veroneze/" target="_blank" rel="noreferrer" className="footer__link">LinkedIn</a>
             <a href="https://wa.me/552499836997" target="_blank" rel="noreferrer" className="footer__link">WhatsApp</a>
           </div>
         </div>
