@@ -24,7 +24,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.45; /* Dim the background for better legibility */
+  opacity: 0.45;
+  /* Dim the background for better legibility */
 }
 
 @keyframes heroFadeUp {
@@ -32,6 +33,7 @@
     opacity: 0;
     transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -47,12 +49,15 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  margin-top: 40px; /* Offset for the navbar */
-  pointer-events: none; /* Let mouse events pass through to the background */
+  margin-top: 40px;
+  /* Offset for the navbar */
+  pointer-events: none;
+  /* Let mouse events pass through to the background */
 }
 
 .hero__badge {
-  pointer-events: auto; /* Restore interactivity */
+  pointer-events: auto;
+  /* Restore interactivity */
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -77,9 +82,17 @@
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.4); }
-  70% { box-shadow: 0 0 0 6px rgba(0, 230, 118, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 230, 118, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 230, 118, 0);
+  }
 }
 
 .hero__title {
@@ -90,7 +103,7 @@
   line-height: 1.05;
   margin: 0;
   letter-spacing: -0.03em;
-  text-shadow: 0px 8px 30px rgba(0,0,0,0.8), 0px 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 0px 8px 30px rgba(0, 0, 0, 0.8), 0px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero__role {
@@ -104,7 +117,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  text-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
   opacity: 0;
   animation: heroFadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.7s;
@@ -117,7 +130,7 @@
   line-height: 1.7;
   margin: 0;
   font-weight: 400;
-  text-shadow: 0px 2px 8px rgba(0,0,0,0.8);
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.8);
   opacity: 0;
   animation: heroFadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.9s;
@@ -134,7 +147,8 @@
 }
 
 .hero__btn {
-  pointer-events: auto; /* Restore interactivity for buttons */
+  pointer-events: auto;
+  /* Restore interactivity for buttons */
   text-decoration: none;
   padding: 14px 36px;
   border-radius: 12px;
@@ -142,6 +156,10 @@
   font-size: 1rem;
   transition: all 0.2s ease;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .hero__btn--primary {
@@ -174,6 +192,7 @@
     flex-direction: column;
     width: 100%;
   }
+
   .hero__btn {
     width: 100%;
     text-align: center;

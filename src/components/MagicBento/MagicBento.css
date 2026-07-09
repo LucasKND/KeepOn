@@ -138,17 +138,30 @@
   line-clamp: var(--clamp-desc);
 }
 
-@media (max-width: 599px) {
+@media (max-width: 768px) {
   .card-grid {
     grid-template-columns: 1fr;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     padding: 0.5em;
   }
 
   .magic-bento-card {
     width: 100%;
-    min-height: 180px;
+    min-height: auto;
+    aspect-ratio: auto; /* Allow card to grow naturally */
+    padding: 1.5em;
+    gap: 20px;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .magic-bento-card__description {
+    --clamp-desc: 20 !important; /* Never truncate text on mobile */
+  }
+  
+  .bento-visual__stack-cloud {
+    padding: 20px 0;
   }
 }
 
@@ -167,10 +180,18 @@
     grid-column: span 2;
     grid-row: span 2;
   }
+  
+  .magic-bento-card:nth-child(3) .magic-bento-card__description {
+    --clamp-desc: 12; /* allow huge text block to fill space */
+  }
 
   .magic-bento-card:nth-child(4) {
     grid-column: 1 / span 2;
     grid-row: 2 / span 2;
+  }
+
+  .magic-bento-card:nth-child(4) .magic-bento-card__description {
+    --clamp-desc: 8; 
   }
 
   .magic-bento-card:nth-child(6) {
@@ -250,4 +271,202 @@
 .bento-section {
   position: relative;
   user-select: none;
+}
+
+/* --- Bento Visuals --- */
+.magic-bento-card__visual {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  min-height: 120px;
+}
+
+/* 1. Code Block Visual */
+.bento-visual__code {
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #a9b7c6;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: rotate(-2deg) translateY(0px);
+  transition: transform 0.4s ease;
+  width: 100%;
+  max-width: 250px;
+}
+
+.magic-bento-card:hover .bento-visual__code {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+.bento-visual__code-header {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.bento-visual__code-header .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.bento-visual__code-header .red { background: #ff5f56; }
+.bento-visual__code-header .yellow { background: #ffbd2e; }
+.bento-visual__code-header .green { background: #27c93f; }
+
+.token-keyword { color: #cc7832; }
+.token-operator { color: #a9b7c6; }
+.token-string { color: #6a8759; }
+.token-function { color: #ffc66d; }
+
+/* 2. Logo Wrapper (TripleTen, EEAR, CFN) */
+.bento-visual__logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-visual__logo-glow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(123, 44, 191, 0.6) 0%, transparent 70%);
+  filter: blur(15px);
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.bento-visual__logo-glow.military {
+  background: radial-gradient(circle, rgba(76, 201, 240, 0.5) 0%, transparent 70%);
+}
+
+.magic-bento-card:hover .bento-visual__logo-glow {
+  transform: scale(1.3);
+  opacity: 0.8;
+}
+
+.bento-visual__logo {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tripleten-img {
+  width: 140px;
+  opacity: 0.9;
+}
+
+.military-img {
+  width: 90px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.magic-bento-card:hover .bento-visual__logo {
+  transform: scale(1.1) translateY(-5px);
+}
+
+/* 3. Tech Stack Cloud */
+.bento-visual__stack-cloud {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-bento-card:hover .tech-tag {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.magic-bento-card:hover .t-docker { border-color: rgba(36, 150, 237, 0.6); box-shadow: 0 5px 15px rgba(36, 150, 237, 0.3); color: #2496ed;}
+.magic-bento-card:hover .t-n8n { border-color: rgba(234, 75, 113, 0.6); box-shadow: 0 5px 15px rgba(234, 75, 113, 0.3); color: #ea4b71; }
+.magic-bento-card:hover .t-traefik { border-color: rgba(43, 169, 184, 0.6); box-shadow: 0 5px 15px rgba(43, 169, 184, 0.3); color: #2ba9b8;}
+.magic-bento-card:hover .t-minio { border-color: rgba(199, 46, 73, 0.6); box-shadow: 0 5px 15px rgba(199, 46, 73, 0.3); color: #c72e49;}
+.magic-bento-card:hover .t-rabbit { border-color: rgba(255, 102, 0, 0.6); box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3); color: #ff6600;}
+.magic-bento-card:hover .t-react { border-color: rgba(97, 218, 251, 0.6); box-shadow: 0 5px 15px rgba(97, 218, 251, 0.3); color: #61dafb;}
+.magic-bento-card:hover .t-api { border-color: rgba(37, 211, 102, 0.6); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); color: #25d366;}
+.magic-bento-card:hover .t-js { border-color: rgba(247, 223, 30, 0.6); box-shadow: 0 5px 15px rgba(247, 223, 30, 0.3); color: #f7df1e;}
+
+/* 4. Chart Visual */
+.bento-visual__chart {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  padding: 0 10%;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart-fill {
+  fill: rgba(76, 201, 240, 0.15);
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.chart-line {
+  fill: none;
+  stroke: #4cc9f0;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.chart-point {
+  fill: #fff;
+  stroke: #4cc9f0;
+  stroke-width: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.6s;
+}
+
+.magic-bento-card:hover .chart-line {
+  stroke-dashoffset: 0;
+}
+
+.magic-bento-card:hover .chart-point {
+  opacity: 1;
+}
+.magic-bento-card:hover .chart-fill {
+  fill: rgba(76, 201, 240, 0.3);
 }

@@ -11,12 +11,22 @@ const cardData = [
   {
     color: '#120F17',
     title: 'Desenvolvedor Front-end',
-    description: 'Especialista em criar interfaces, institucionais e landing pages focadas em conversão. (20 anos)',
+    description: 'Crio interfaces, institucionais e landing pages focadas em conversão.',
     label: 'Perfil',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
         <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
       </svg>
+    ),
+    visual: (
+      <div className="bento-visual__code">
+        <div className="bento-visual__code-header">
+          <span className="dot red"></span>
+          <span className="dot yellow"></span>
+          <span className="dot green"></span>
+        </div>
+        <pre><code><span className="token-keyword">const</span> dev <span className="token-operator">=</span> <span className="token-string">"LucasKND"</span>;<br /><span className="token-keyword">await</span> dev.<span className="token-function">build</span>();</code></pre>
+      </div>
     )
   },
   {
@@ -25,29 +35,72 @@ const cardData = [
     description: 'Formado no único bootcamp americano de tecnologia no Brasil.',
     label: 'Formação',
     icon: (
-      <img src="/tripleten.png" alt="TripleTen Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+      </svg>
+    ),
+    visual: (
+      <div className="bento-visual__logo-wrapper">
+        <div className="bento-visual__logo-glow"></div>
+        <img src="/tripleten.png" alt="TripleTen Logo" className="bento-visual__logo tripleten-img" />
+      </div>
     )
   },
   {
     color: '#120F17',
-    title: 'React, Git & Mais',
-    description: 'Domínio do ecossistema moderno de desenvolvimento web e versionamento.',
+    title: 'React, Git & Infraestrutura',
+    description: (
+      <>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Front-end & Code:</strong> Interfaces dinâmicas com React e JavaScript, e Git para versionamento impecável.</span>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>CMS & Sites:</strong> Desenvolvimento e manutenção de sites em WordPress com Elementor, além de gestão de domínios.</span>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Tracking & Analytics:</strong> Configuração de Clarity, Hotjar, Meta Pixel e Google Tag Manager.</span>
+        <span style={{ display: 'block' }}><strong>Infra & Containers:</strong> Arquitetura via Docker, orquestrada com Portainer e Traefik (Reverse Proxy). Armazenamento em nuvem com MinIO (S3-compatible) e mensageria assíncrona com RabbitMQ.</span>
+      </>
+    ),
     label: 'Stack',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline>
       </svg>
+    ),
+    visual: (
+      <div className="bento-visual__stack-cloud">
+        <span className="tech-tag t-docker">Docker</span>
+        <span className="tech-tag t-n8n">n8n</span>
+        <span className="tech-tag t-traefik">Traefik</span>
+        <span className="tech-tag t-minio">MinIO</span>
+        <span className="tech-tag t-rabbit">RabbitMQ</span>
+        <span className="tech-tag t-api">API WhatsApp</span>
+        <span className="tech-tag t-react">React</span>
+        <span className="tech-tag t-js">JavaScript</span>
+      </div>
     )
   },
   {
     color: '#120F17',
-    title: 'Gestão de Tráfego',
-    description: 'Campanhas Meta Ads e integração de Pixel, Google Tag Manager, Hotjar e ferramentas de rastreio.',
-    label: 'Marketing',
+    title: 'Sobre Mim',
+    description: (
+      <>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Nome:</strong> Lucas Veroneze Ramalho Resende</span>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Idade:</strong> 20 anos</span>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Local:</strong> Resende, RJ</span>
+        <span style={{ display: 'block' }}><strong>Trajetória:</strong> Atuei como Desenvolvedor e Gestor de Tráfego META Ads na 2go Marketing, Desenvolvi sites institucionais para empresas de diversos nichos e landing pages nichadas, Desenvolvimento de infra para N8N e gestor META Ads para diversos seguimentos.</span>
+      </>
+    ),
+    label: 'Pessoal',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline>
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
       </svg>
+    ),
+    visual: (
+      <div className="bento-visual__chart">
+        <svg viewBox="0 0 100 50" className="chart-svg">
+          <path d="M0,50 L0,40 C20,40 30,20 50,25 C70,30 80,5 100,0 L100,50 Z" className="chart-fill" />
+          <path d="M0,40 C20,40 30,20 50,25 C70,30 80,5 100,0" className="chart-line" />
+          <circle cx="100" cy="0" r="2.5" className="chart-point" />
+        </svg>
+      </div>
     )
   },
   {
@@ -56,16 +109,32 @@ const cardData = [
     description: 'Aprovado e classificado no exigente concurso da Força Aérea Brasileira (EEAR).',
     label: 'Conquista Militar',
     icon: (
-      <img src="/eear.jpeg" alt="EEAR Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+    ),
+    visual: (
+      <div className="bento-visual__logo-wrapper">
+        <div className="bento-visual__logo-glow military"></div>
+        <img src="/eear-removebg-preview.png" alt="EEAR Logo" className="bento-visual__logo military-img" />
+      </div>
     )
   },
   {
     color: '#120F17',
     title: 'Fuzileiros Navais',
-    description: 'Classificação de destaque no rigoroso concurso da Marinha do Brasil (CFN).',
+    description: 'Classificação de destaque no concurso da Marinha do Brasil (CFN).',
     label: 'Conquista Militar',
     icon: (
-      <img src="/cfn.jpeg" alt="CFN Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </svg>
+    ),
+    visual: (
+      <div className="bento-visual__logo-wrapper">
+        <div className="bento-visual__logo-glow military"></div>
+        <img src="/cfn-removebg-preview.png" alt="CFN Logo" className="bento-visual__logo military-img" />
+      </div>
     )
   }
 ];
