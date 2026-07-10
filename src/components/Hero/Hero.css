@@ -106,6 +106,29 @@
   text-shadow: 0px 8px 30px rgba(0, 0, 0, 0.8), 0px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+.hero__title-mobile {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .hero__title-desktop {
+    display: none !important;
+  }
+  
+  .hero__title-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+  
+  .hero__title-mobile p {
+    justify-content: center;
+    margin: 0;
+    line-height: 1;
+  }
+}
+
 .hero__role {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.8rem);

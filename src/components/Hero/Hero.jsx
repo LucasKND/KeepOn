@@ -31,7 +31,22 @@ function Hero() {
             delay={50}
             animateBy="letters"
             direction="top"
+            className="hero__title-desktop"
           />
+          <div className="hero__title-mobile">
+            <BlurText
+              text="Lucas"
+              delay={50}
+              animateBy="letters"
+              direction="top"
+            />
+            <BlurText
+              text="Veroneze."
+              delay={50}
+              animateBy="letters"
+              direction="top"
+            />
+          </div>
         </h1>
 
         <h2 className="hero__role">

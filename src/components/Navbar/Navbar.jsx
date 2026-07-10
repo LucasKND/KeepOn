@@ -33,9 +33,7 @@ function Navbar() {
 
       {/* Navigation */}
       <ul className="navbar__links">
-        <li>
-          <a className="navbar__link" href="#features">Features</a>
-        </li>
+
         <li>
           <a className="navbar__link" href="#about">About</a>
         </li>

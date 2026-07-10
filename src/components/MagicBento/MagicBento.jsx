@@ -32,7 +32,7 @@ const cardData = [
   {
     color: '#120F17',
     title: 'TripleTen Bootcamp',
-    description: 'Formado no único bootcamp americano de tecnologia no Brasil.',
+    description: 'Formado no único bootcamp americano de tecnologia no Brasil, no curso de desenvolvimento full-stack.',
     label: 'Formação',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
@@ -53,7 +53,7 @@ const cardData = [
       <>
         <span style={{ display: 'block', marginBottom: '8px' }}><strong>Front-end & Code:</strong> Interfaces dinâmicas com React e JavaScript, e Git para versionamento impecável.</span>
         <span style={{ display: 'block', marginBottom: '8px' }}><strong>CMS & Sites:</strong> Desenvolvimento e manutenção de sites em WordPress com Elementor, além de gestão de domínios.</span>
-        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Tracking & Analytics:</strong> Configuração de Clarity, Hotjar, Meta Pixel e Google Tag Manager.</span>
+        <span style={{ display: 'block', marginBottom: '8px' }}><strong>Tracking & Analytics:</strong> Configuração de Clarity, Hotjar, Meta Pixel, Google Tag Manager e Cloudflare.</span>
         <span style={{ display: 'block' }}><strong>Infra & Containers:</strong> Arquitetura via Docker, orquestrada com Portainer e Traefik (Reverse Proxy). Armazenamento em nuvem com MinIO (S3-compatible) e mensageria assíncrona com RabbitMQ.</span>
       </>
     ),
@@ -123,7 +123,7 @@ const cardData = [
   {
     color: '#120F17',
     title: 'Fuzileiros Navais',
-    description: 'Classificação de destaque no concurso da Marinha do Brasil (CFN).',
+    description: 'Classificação no concurso da Marinha do Brasil (CFN).',
     label: 'Conquista Militar',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
@@ -262,11 +262,12 @@ const ParticleCard = ({
   }, [initializeParticles]);
 
   useEffect(() => {
-    if (disableAnimations || !cardRef.current) return;
+    if (!cardRef.current) return;
 
     const element = cardRef.current;
 
     const handleMouseEnter = () => {
+      if (disableAnimations) return;
       isHoveredRef.current = true;
       animateParticles();
 
@@ -282,6 +283,7 @@ const ParticleCard = ({
     };
 
     const handleMouseLeave = () => {
+      if (disableAnimations) return;
       isHoveredRef.current = false;
       clearAllParticles();
 
@@ -305,7 +307,7 @@ const ParticleCard = ({
     };
 
     const handleMouseMove = e => {
-      if (!enableTilt && !enableMagnetism) return;
+      if (disableAnimations || (!enableTilt && !enableMagnetism)) return;
 
       const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -581,7 +583,7 @@ const MagicBento = ({
   const shouldDisableAnimations = disableAnimations || isMobile;
 
   useEffect(() => {
-    if (!gridRef.current || shouldDisableAnimations) return;
+    if (!gridRef.current || disableAnimations) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -603,7 +605,7 @@ const MagicBento = ({
   }, [shouldDisableAnimations]);
 
   return (
-    <section className="bento-section" style={{ padding: '4rem 0', background: '#120F17' }}>
+    <section id="about" className="bento-section" style={{ padding: '4rem 0', background: '#120F17' }}>
       {enableSpotlight && (
         <GlobalSpotlight
           gridRef={gridRef}
@@ -712,7 +714,7 @@ const MagicBento = ({
                 };
 
                 const handleClick = e => {
-                  if (!clickEffect || shouldDisableAnimations) return;
+                  if (!clickEffect) return;
 
                   const rect = el.getBoundingClientRect();
                   const x = e.clientX - rect.left;

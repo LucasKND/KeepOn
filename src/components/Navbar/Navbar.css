@@ -125,25 +125,36 @@
   transform: scale(0.97);
 }
 
-/* ── Mobile ── */
+/* ── Tablet & Mobile ── */
+@media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 32px);
+    padding: 0 16px;
+  }
+}
+
 @media (max-width: 640px) {
+  .navbar__item-features {
+    display: none;
+  }
+
   .navbar {
     width: calc(100% - 24px);
-    padding: 0 16px;
-    height: 54px; /* Aumentado de 44px para 54px */
+    padding: 0 12px;
+    height: 52px;
   }
 
   .navbar__link {
-    padding: 8px 12px;
+    padding: 8px 10px;
     font-size: 0.85rem;
   }
 
   .navbar__cta {
-    padding: 8px 16px;
+    padding: 8px 12px;
     font-size: 0.85rem;
   }
 
   .navbar__brand-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 }

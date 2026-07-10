@@ -90,11 +90,9 @@ function App() {
         height: '120px',
         position: 'relative',
         overflow: 'hidden',
-        background: '#0b0b0b',
+        background: '#120F17',
         display: 'flex',
         alignItems: 'center',
-        borderTop: '1px solid rgba(82, 39, 255, 0.15)',
-        borderBottom: '1px solid rgba(82, 39, 255, 0.15)',
       }}>
         <LogoLoop
           logos={techLogos}
@@ -105,7 +103,7 @@ function App() {
           hoverSpeed={0}
           scaleOnHover
           fadeOut
-          fadeOutColor="#0b0b0b"
+          fadeOutColor="#120F17"
           ariaLabel="Technologies"
         />
       </div>
