@@ -82,6 +82,14 @@ const techLogos = [
 ];
 
 function App() {
+  React.useEffect(() => {
+    // Remove o hash (#about) da URL se existir e joga pro topo sem animação
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   return (
     <>
       <Navbar />

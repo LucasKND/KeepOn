@@ -114,14 +114,14 @@
   .hero__title-desktop {
     display: none !important;
   }
-  
+
   .hero__title-mobile {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0px;
   }
-  
+
   .hero__title-mobile p {
     justify-content: center;
     margin: 0;

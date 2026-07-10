@@ -585,14 +585,22 @@ const MagicBento = ({
   useEffect(() => {
     if (!gridRef.current || disableAnimations) return;
 
+    let delay = 0;
+    let timeoutId;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('magic-bento-card--visible');
+          setTimeout(() => {
+            entry.target.classList.add('magic-bento-card--visible');
+          }, delay);
+          delay += 120; // 120ms stagger
         } else {
           entry.target.classList.remove('magic-bento-card--visible');
         }
       });
+      // Reset delay after current batch of entries
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => { delay = 0; }, 150);
     }, {
       threshold: 0.15, // Trigger when 15% is visible
       rootMargin: '0px 0px -10% 0px' // Slightly inset so it doesn't trigger at the absolute edge
@@ -605,7 +613,7 @@ const MagicBento = ({
   }, [shouldDisableAnimations]);
 
   return (
-    <section id="about" className="bento-section" style={{ padding: '4rem 0', background: '#120F17' }}>
+    <section id="about" className="bento-section" style={{ padding: '4rem 0' }}>
       {enableSpotlight && (
         <GlobalSpotlight
           gridRef={gridRef}

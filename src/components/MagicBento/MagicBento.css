@@ -38,8 +38,8 @@
 
   /* Initial hidden state for scroll animation */
   opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  transform: translateY(80px) scale(0.9);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 
   --glow-x: 50%;
   --glow-y: 50%;
@@ -278,6 +278,12 @@
 .bento-section {
   position: relative;
   user-select: none;
+  background-color: var(--background-dark);
+  background-image: 
+    radial-gradient(ellipse at bottom, rgba(82, 39, 255, 0.08) 0%, transparent 60%),
+    linear-gradient(to top, transparent 60%, rgba(18, 15, 23, 1) 100%);
+  background-size: 100% 100%, 100% 100%;
+  background-position: center bottom, center;
 }
 
 /* --- Bento Visuals --- */
